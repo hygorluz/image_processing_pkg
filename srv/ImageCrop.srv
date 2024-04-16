@@ -1,3 +1,4 @@
-string cropped_image_path
+string image_path
+int8 request_id
 ---
 sensor_msgs/Image image
