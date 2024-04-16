@@ -7,7 +7,9 @@
   <maintainer email="jonhdoe@gmail.com">jonhdoe</maintainer>
   <license>TODO: License declaration</license>
   <depend>rclcpp</depend>
-  
+  <depend>cv_bridge</depend>
+  <depend>sensor_msgs</depend>
+
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
   <exec_depend>rosidl_default_runtime</exec_depend>

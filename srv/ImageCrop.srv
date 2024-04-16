@@ -1,0 +1,3 @@
+string cropped_image_path
+---
+sensor_msgs/Image image
