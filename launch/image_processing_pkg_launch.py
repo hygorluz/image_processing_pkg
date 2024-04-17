@@ -15,7 +15,7 @@ def generate_launch_description():
             parameters=[{
                 "image_name": "image_4.jpeg",
                 "interation_num": 3,
-                "cropped_image_path":"/home/hygor/ros2_ws/src/image_processing_pkg/res/cropped"
+                "cropped_image_path":"/home/YOUR_USER/ros2_ws/src/image_processing_pkg/res/cropped"
             }]
         )
     ])

@@ -18,7 +18,6 @@ using std::placeholders::_2;
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  sleep(1);
   // Node, Client and Publisher
   auto node = rclcpp::Node::make_shared("image_crop_client_node");
   auto client = node->create_client<image_processing_pkg::srv::ImageCrop>("process_image");
@@ -27,10 +26,10 @@ int main(int argc, char * argv[])
   // Parameters
   string root_path = std::filesystem::current_path();
   root_path = std::regex_replace(root_path, std::regex("\\/launch"), "");
-  string image_path =  root_path + "/res/images/";
+  string image_path =  root_path + "/src/image_processing_pkg/res/images/";
   node->declare_parameter("interation_num", 3);
   node->declare_parameter("cropped_image_path", root_path + "/src/image_processing_pkg/res/cropped");
-  node->declare_parameter("image_name", "image_2.jpeg");
+  node->declare_parameter("image_name", "image_1.jpeg");
   auto request = std::make_shared<image_processing_pkg::srv::ImageCrop::Request>();
   
   string cropped_image_path = node->get_parameter("cropped_image_path").as_string();

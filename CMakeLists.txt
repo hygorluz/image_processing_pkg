@@ -12,9 +12,8 @@ find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(sensor_msgs REQUIRED)
-
-
 find_package(rosidl_default_generators REQUIRED)
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/TargetCroppedAxis.msg"
   "srv/ImageCrop.srv"
@@ -42,7 +41,13 @@ target_compile_features(image_crop_client_node PUBLIC c_std_99 cxx_std_17)  # Re
 
 install(TARGETS 
   image_crop_client_node
-  image_crop_server_node
+  image_crop_server_node  
   DESTINATION lib/${PROJECT_NAME})
+
+# Install launch files.
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
 
 ament_package()
