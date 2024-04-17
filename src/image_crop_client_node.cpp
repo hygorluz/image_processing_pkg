@@ -27,15 +27,15 @@ int main(int argc, char * argv[])
   string root_path = std::filesystem::current_path();
   root_path = std::regex_replace(root_path, std::regex("\\/launch"), "");
   string image_path =  root_path + "/src/image_processing_pkg/res/images/";
-  node->declare_parameter("interation_num", 3);
+  node->declare_parameter("iterations_num", 3);
   node->declare_parameter("cropped_image_path", root_path + "/src/image_processing_pkg/res/cropped");
   node->declare_parameter("image_name", "image_1.jpeg");
   auto request = std::make_shared<image_processing_pkg::srv::ImageCrop::Request>();
   
   string cropped_image_path = node->get_parameter("cropped_image_path").as_string();
-  int interation_num = node->get_parameter("interation_num").as_int();
-  if(interation_num <= 0){
-    interation_num = 3;
+  int iterations_num = node->get_parameter("iterations_num").as_int();
+  if(iterations_num <= 0){
+    iterations_num = 3;
   }
 
   while (!client->wait_for_service(1s)) {
@@ -46,7 +46,7 @@ int main(int argc, char * argv[])
     RCLCPP_INFO(node->get_logger(), "service not available, waiting again...");
   }
 
-  for (int i = 1;i<=interation_num;i++){
+  for (int i = 1;i<=iterations_num;i++){
 
     request->image_path =  image_path + node->get_parameter("image_name").as_string();
     request->request_id = i;
@@ -57,7 +57,7 @@ int main(int argc, char * argv[])
 
     RCLCPP_INFO(node->get_logger(), "Request '%d'- Image : '%s'", i, request->image_path.c_str());        
     auto target_cropped_axis = image_processing_pkg::msg::TargetCroppedAxis();
-    float proportion = std::min(1.0, (1.0/interation_num)*i);
+    float proportion = std::min(1.0, (1.0/iterations_num)*i);
     int proportion_percent = proportion * 100; 
     target_cropped_axis.x = proportion;
     target_cropped_axis.y = proportion;

@@ -2,7 +2,7 @@
     <node pkg="image_processing_pkg" exec="image_crop_server_node" name="server"/>
     <node pkg="image_processing_pkg" exec="image_crop_client_node" name="client">
         <param name="image_name" value="image_4.jpeg"/>
-        <param name="interation_num" value="4"/>
+        <param name="iterations_num" value="3"/>
         <param name="cropped_image_path" value="/home/YOUR_USER/ros2_ws/src/image_processing_pkg/res/cropped"/>
     </node>
 </launch>
