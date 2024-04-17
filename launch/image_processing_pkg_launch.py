@@ -6,21 +6,16 @@ def generate_launch_description():
         Node(
             package="image_processing_pkg",
             executable="image_crop_server_node",
-            name="server",
-            parameters=[{
-                "image_path": "images",
-                "tries": "1",
-                "cropped_image_path":"cropped"
-            }]
+            name="server"
         ),
-        """Node(
+        Node(
             package='image_processing_pkg',
             executable='image_crop_client_node',
             name='client',
             parameters=[{
-                "image_path": "earth",
-                "tries": "1",
-                "cropped_image_path":""
+                "image_name": "image_4.jpeg",
+                "interation_num": 3,
+                "cropped_image_path":"/home/hygor/ros2_ws/src/image_processing_pkg/res/cropped"
             }]
-        )"""
+        )
     ])
