@@ -85,7 +85,7 @@ cd ~/ros2_ws
 ```
 After that:
 - Extract the image_processing_pkg.zip inside the **'~/ros2_ws/src'**.
-- Rename the folder to **'image_processing_pkg'**
+- Rename the folder to **'image_processing_pkg'** if necessary.
 
 ## How to run?
 To run the project you will need to first be in the ros2 workspace, for this project it was used the name **'ros2_ws'** at the system's home.
