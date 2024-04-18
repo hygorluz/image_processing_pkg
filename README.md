@@ -71,43 +71,48 @@ source ~/ros2_ws/install/setup.bash
 - With those lines ros2 will be sourced on every console at the startup, colcon autocomplete will be active and every built package will be ready to be used.
 
 ### Install colcon
+Make sure colcon is installed.
 ```sh
 sudo apt install python3-colcon-common-extensions
 ```
 
 ## Starting Workspace
-- To start the project let's first create the workspace. This project uses the default configuration and creates the ros2_ws at the system's home.
+- To start the project let's first create the workspace. This project uses the default configuration and creates the **ros2_ws** at the system's home.
 ```sh
 # at home
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws
 ```
-After that extract the image_processing_pkg.zip inside the '~/ros2_ws/src'.
+After that:
+- Extract the image_processing_pkg.zip inside the **'~/ros2_ws/src'**.
+- Rename the folder to **'image_processing_pkg'**
 
 ## How to run?
-To run the project you will need to first be in the ros2 workspace, for this project it was used the name 'ros2_ws' at the system's home.
+To run the project you will need to first be in the ros2 workspace, for this project it was used the name **'ros2_ws'** at the system's home.
 - First, we need to build the package
 ```sh
 colcon build --packages-select image_processing_pkg
 ```
 ### Setup before run the package
-Inside the image_processing_pkg_launch.xml or image_processing_pkg_launch.py you can change the variable:
-- image_name: the name of the image you want to crop (The project already has 4 example images to be used)
-- iterations_num: iterations number
-- cropped_image_path: Path where the cropped image will be saved
+Inside the **image_processing_pkg_launch.xml** or **image_processing_pkg_launch.py** you can change the variable:
+- **image_name**: the name of the image you want to crop (The project already has 4 example images to be used)
+- **iterations_num**: iterations number
+- **cropped_image_path**: Path where the cropped image will be saved
 
-The image_processing_pkg_launch.* files are located inside 'ros2_ws/src/image_processing_pkg/launch'
+The image_processing_pkg_launch.* files are located inside **'ros2_ws/src/image_processing_pkg/launch'**
 
-To add new images to be cropped, just add the image at the 'ros2_ws/src/image_processing_pkg/res/images' and change the parameter image_name to the image's name you just added. Because we are providing a launch file through the package it's necessary to build the package every time the launch files are changed.
+To add new images to be cropped, just add the image at the **'ros2_ws/src/image_processing_pkg/res/images'** and change the parameter image_name to the image's name you just added. Because we are providing a launch file through the package it's necessary to build the package every time the launch files are changed.
 
 
 - After the package is built and the setup is done you can run the one of following commands:
 ```sh
+# From ros2_ws
+cd ~/ros2_ws
 ros2 launch image_processing_pkg image_processing_pkg_launch.xml
 ros2 launch image_processing_pkg image_processing_pkg_launch.py
 ``` 
 ## Project Diagrams
-The diagrams of the project can be found in the /docs folder.
+The diagrams of the project can be found in the **/docs** folder.
 
 ## What next?
 An evolutive to the project could be add the ability to detect shapes, objects, texts, etc. This can be achieved by using the OpenCV lib.
